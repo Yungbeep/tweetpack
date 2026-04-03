@@ -48,3 +48,13 @@ export interface SignalScore {
   buildCandidate: boolean;
   reasons: string[];
 }
+
+export interface AnalysisResult {
+  tweet: TweetData;
+  signal: SignalScore;
+  links: ExtractedLink[];
+  buildBrief: string;
+  claudePrompt: string;
+  tweetMarkdown: string;
+  sources: Array<{ filename: string; content: string }>;
+}

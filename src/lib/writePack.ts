@@ -43,7 +43,7 @@ export async function writePack(
   await writeFile(join(outputDir, "claude-prompt.md"), claudePrompt, "utf-8");
 }
 
-function formatTweetMarkdown(tweet: TweetData): string {
+export function formatTweetMarkdown(tweet: TweetData): string {
   let md = `# Tweet by ${tweet.author || "Unknown"} (@${tweet.handle || "unknown"})\n\n`;
   md += `URL: ${tweet.canonicalUrl}\n`;
   if (tweet.timestamp) md += `Date: ${tweet.timestamp}\n`;
