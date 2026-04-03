@@ -1,6 +1,6 @@
 import * as cheerio from "cheerio";
-import type { TweetData } from "./types.js";
-import type { NormalizedTweet } from "./normalize.js";
+import type { TweetData } from "./types";
+import type { NormalizedTweet } from "./normalize";
 
 // Attempt 1: Twitter syndication API (no JS needed)
 async function fetchViaEmbed(

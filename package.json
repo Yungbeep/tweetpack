@@ -17,7 +17,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "dependencies": {
     "@tailwindcss/postcss": "^4.2.2",
     "cheerio": "^1.2.0",

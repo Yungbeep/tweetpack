@@ -2,13 +2,13 @@
 
 import { Command } from "commander";
 import { join, resolve } from "node:path";
-import { normalizeTweetUrl } from "./lib/normalize.js";
-import { extractTweet } from "./lib/extractX.js";
-import { extractAndFetchLinks } from "./lib/extractLinks.js";
-import { generateBuildBrief } from "./lib/buildBrief.js";
-import { buildClaudePrompt } from "./lib/promptBuilder.js";
-import { writePack } from "./lib/writePack.js";
-import { scoreTweetSignal } from "./lib/scoreSignal.js";
+import { normalizeTweetUrl } from "./lib/normalize";
+import { extractTweet } from "./lib/extractX";
+import { extractAndFetchLinks } from "./lib/extractLinks";
+import { generateBuildBrief } from "./lib/buildBrief";
+import { buildClaudePrompt } from "./lib/promptBuilder";
+import { writePack } from "./lib/writePack";
+import { scoreTweetSignal } from "./lib/scoreSignal";
 
 const program = new Command();
 

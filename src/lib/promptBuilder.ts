@@ -1,4 +1,4 @@
-import type { TweetData, ExtractedLink } from "./types.js";
+import type { TweetData, ExtractedLink } from "./types";
 
 export function buildClaudePrompt(
   tweet: TweetData,

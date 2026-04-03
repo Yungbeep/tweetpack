@@ -1,6 +1,6 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
-import type { TweetData, ExtractedLink } from "./types.js";
+import type { TweetData, ExtractedLink } from "./types";
 
 export async function writePack(
   outputDir: string,

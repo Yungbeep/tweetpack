@@ -1,4 +1,4 @@
-import type { TweetData, ExtractedLink, BuildBrief, SignalScore } from "./types.js";
+import type { TweetData, ExtractedLink, BuildBrief, SignalScore } from "./types";
 
 export function generateBuildBrief(
   tweet: TweetData,

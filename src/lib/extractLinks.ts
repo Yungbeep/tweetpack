@@ -1,5 +1,5 @@
-import { htmlToReadableMarkdown } from "./readable.js";
-import type { ExtractedLink } from "./types.js";
+import { htmlToReadableMarkdown } from "./readable";
+import type { ExtractedLink } from "./types";
 
 const SKIP_DOMAINS = [
   "twitter.com",

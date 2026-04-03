@@ -1,4 +1,4 @@
-import type { TweetData, ExtractedLink, SignalScore, SignalLevel } from "./types.js";
+import type { TweetData, ExtractedLink, SignalScore, SignalLevel } from "./types";
 
 const BUILD_KEYWORDS = [
   "built", "building", "launched", "launching", "shipped", "shipping",
