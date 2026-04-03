@@ -39,3 +39,12 @@ export interface BuildBrief {
   openQuestions: string[];
   assumptions: string[];
 }
+
+export type SignalLevel = "high" | "medium" | "low";
+
+export interface SignalScore {
+  score: number;
+  level: SignalLevel;
+  buildCandidate: boolean;
+  reasons: string[];
+}

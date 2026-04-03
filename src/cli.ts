@@ -8,6 +8,7 @@ import { extractAndFetchLinks } from "./lib/extractLinks.js";
 import { generateBuildBrief } from "./lib/buildBrief.js";
 import { buildClaudePrompt } from "./lib/promptBuilder.js";
 import { writePack } from "./lib/writePack.js";
+import { scoreTweetSignal } from "./lib/scoreSignal.js";
 
 const program = new Command();
 
@@ -24,12 +25,12 @@ program
       console.log("\n[tweetpack] Starting...\n");
 
       // 1. Normalize URL
-      console.log("[1/5] Normalizing URL...");
+      console.log("[1/6] Normalizing URL...");
       const norm = normalizeTweetUrl(url);
       console.log(`  Canonical: ${norm.canonicalUrl}`);
 
       // 2. Extract tweet
-      console.log("\n[2/5] Extracting tweet...");
+      console.log("\n[2/6] Extracting tweet...");
       const tweet = await extractTweet(norm);
       if (tweet.text) {
         console.log(
@@ -44,19 +45,28 @@ program
       const outputDir = resolve(opts.output, outputDirName);
       const sourcesDir = join(outputDir, "sources");
 
-      console.log(`\n[3/5] Fetching ${tweet.outboundUrls.length} outbound link(s)...`);
+      console.log(`\n[3/6] Fetching ${tweet.outboundUrls.length} outbound link(s)...`);
       const { links, markdownFiles } = await extractAndFetchLinks(
         tweet.outboundUrls,
         sourcesDir
       );
 
-      // 4. Generate build brief + prompt
-      console.log("\n[4/5] Generating build brief and prompt...");
-      const buildBrief = generateBuildBrief(tweet, links, markdownFiles);
+      // 4. Score signal quality + generate brief
+      console.log("\n[4/6] Scoring build signal...");
+      const signal = scoreTweetSignal(tweet, links);
+      console.log(`  Score:  ${signal.score}/100`);
+      console.log(`  Level:  ${signal.level}`);
+      console.log(`  Build candidate: ${signal.buildCandidate ? "yes" : "no"}`);
+      for (const r of signal.reasons) {
+        console.log(`    ${r}`);
+      }
+
+      console.log("\n[5/6] Generating build brief and prompt...");
+      const buildBrief = generateBuildBrief(tweet, links, markdownFiles, signal);
       const claudePrompt = buildClaudePrompt(tweet, links, outputDir);
 
-      // 5. Write output
-      console.log("\n[5/5] Writing output pack...");
+      // 6. Write output
+      console.log("\n[6/6] Writing output pack...");
       await writePack(
         outputDir,
         tweet,
@@ -76,6 +86,7 @@ program
       console.log(`  Output:     ${outputDir}`);
       console.log(`  Tweet:      ${tweet.text ? "extracted" : "partial"}`);
       console.log(`  Author:     @${tweet.handle || "unknown"}`);
+      console.log(`  Signal:     ${signal.score}/100 (${signal.level}) ${signal.buildCandidate ? "— build candidate" : "— not a build candidate"}`);
       console.log(`  Links:      ${successLinks} fetched, ${failLinks} failed`);
       console.log(`  Sources:    ${markdownFiles.size} page(s) saved`);
       console.log("");

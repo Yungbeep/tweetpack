@@ -1,0 +1,16 @@
+{
+  "url": "https://x.com/kepochnik/status/2039998680040653136",
+  "canonicalUrl": "https://x.com/kepochnik/status/2039998680040653136",
+  "author": "kepo",
+  "handle": "kepochnik",
+  "text": "7 GitHub repo for trading on Polymarket\n\nall of this is free and can help automate your trading\n\n1. Analyzer: https://t.co/mFsl9WA84E\nCollects your full trade history and provides analysis\n\n2. BTC Dashboard: https://t.co/vkZMVlQ5kN\nRecords data from Polymarket and Binance: order https://t.co/xMUsu9AOtt",
+  "timestamp": "2026-04-03T09:29:21.000Z",
+  "mediaUrls": [
+    "https://pbs.twimg.com/media/HE-H9rZWAAAZFL5.png",
+    "https://pbs.twimg.com/media/HE-H906XQAADgtR.png"
+  ],
+  "outboundUrls": [
+    "https://github.com/txbabaxyz/collectmarkets2",
+    "https://github.com/txbabaxyz/polyrec"
+  ]
+}
